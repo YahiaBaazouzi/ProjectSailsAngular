@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {NgcFloatButtonModule} from 'ngc-float-button'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { AppComponent } from './app.component';
@@ -10,6 +11,8 @@ import { AppmenuComponent } from './components/appmenu/appmenu.component';
 import { AppfooterComponent } from './components/appfooter/appfooter.component';
 import { AppsettingsComponent } from './components/appsettings/appsettings.component';
 import { EntrepriseComponent } from './esaad/entreprise/entreprise.component';
+import { DialogComponent } from './esaad/entreprise/dialog/dialog.component';
+
 
 
 
@@ -22,12 +25,14 @@ import { EntrepriseComponent } from './esaad/entreprise/entreprise.component';
     AppfooterComponent,
     AppsettingsComponent,
     EntrepriseComponent,
-   
+    DialogComponent,  
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([{path: "entreprise", component: EntrepriseComponent} ]),
-    NgcFloatButtonModule
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

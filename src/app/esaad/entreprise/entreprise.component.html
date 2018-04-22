@@ -1,6 +1,6 @@
 <!-- Success circle button with ripple effect -->
 
-<section id="dom">       
+<!-- <section id="dom">
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -26,10 +26,15 @@
                                     <td>Customer Support</td>
                                     <td>New York</td>
                                     <td>27</td>
-                                    <td>2011/01/25</td>
+                                    <td>
+                                    </td>
                                     <td align="center">
-                                        <button type="button" class="btn btn-raised btn-success btn-min-width mr-1 mb-1"><i class="fa fa-pencil"></i> Editer</button>
-                                        <button type="button" class="btn btn-raised btn-danger btn-min-width mr-1 mb-1">Supprimer <i class="fa fa-times"></i></button>
+                                        <button type="button" class="btn btn-raised btn-success btn-min-width mr-1 mb-1">
+                                            <i class="fa fa-pencil"></i> Editer</button>
+                                        <button type="button" class="btn btn-raised btn-danger btn-min-width mr-1 mb-1">Supprimer
+                                            <i class="fa fa-times"></i>
+                                        </button>
+
                                     </td>
                                 </tr>
                             </tbody>
@@ -49,5 +54,33 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
+<button (click)="showDialog = !showDialog" class="btn">Open</button>
+<app-dialog [(visible)]="showDialog">
+
+    <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)" class="form">
+        <div class="form-body">
+            <h1>My Reactive Form</h1>
+            <div class="row">
+                <div class="col-md-12">
+                    <fieldset class="form-group">
+                        <label for="basicInput">Name</label>
+                        <input type="text" class="form-control" formControlName="name">
+                        <div class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">{{ titleAlert }}</div>
+                    </fieldset>
+                </div>
+                <div class="col-md-12">
+                    <fieldset class="form-group">
+                        <label for="basicTextarea">Description</label>
+                        <textarea class="form-control" formControlName="description" rows="3"></textarea>
+                        <div class="alert" *ngIf="!rForm.controls['description'].valid && rForm.controls['description'].touched">You must specify a description that's between 30 and 500 characters.</div>
+                    </fieldset>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-raised btn-success btn-min-width mr-1 mb-1" value="Submit Form" [disabled]="!rForm.valid">
+        </div>
+    </form>
+
+    <!-- <button (click)="showDialog = !showDialog" class="btn">Close</button> -->
+</app-dialog>
